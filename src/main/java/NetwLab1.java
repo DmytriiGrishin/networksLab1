@@ -15,7 +15,8 @@ public class NetwLab1{
         binary = builderForBinary.toString();
         System.out.println(binary);
 
-
+        NRZGraph nrzGraph = new NRZGraph(800, 200);
+        nrzGraph.doMagic(binary);
     }
     private static String toHex(byte[] binary) {
         return String.format("%010x", new BigInteger(1, binary));
