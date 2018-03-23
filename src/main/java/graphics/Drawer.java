@@ -1,3 +1,5 @@
+package graphics;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -63,5 +65,8 @@ class Drawer {
         } catch (IOException e){
             System.out.println(e.getMessage());
         }
+    }
+    int getHTextOffset(){
+        return hGraphOffset + hBaseLength / 3;
     }
 }

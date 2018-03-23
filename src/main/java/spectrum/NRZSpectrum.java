@@ -1,9 +1,11 @@
+package spectrum;
+
 import java.util.HashMap;
 
 public class NRZSpectrum {
     private HashMap<Integer, Integer> intervals;
     private int bitsLength;
-    NRZSpectrum(String text){
+    public NRZSpectrum(String text){
         intervals = new HashMap<Integer, Integer>();
         byte[] bytes = text.getBytes();
         int[] bits = new int[bytes.length];

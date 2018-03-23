@@ -1,9 +1,12 @@
-public class RZGraph extends Drawer {
-    RZGraph(int width, int height){
-        super(width, height);
+package graphics;
+
+public class AMIGraph extends Drawer {
+    private boolean wasOnTop;
+    public AMIGraph(int wight, int height){
+        super(wight, height);
+        wasOnTop = false;
         drawBackground();
         vBaseLength /= 2;
-        hBaseLength /= 2;
         vGraphOffset -= vBaseLength;
     }
 
@@ -12,15 +15,20 @@ public class RZGraph extends Drawer {
         char[] chars = str.toCharArray();
         for(char symbol: chars){
             if(symbol == '1'){
-                draw1();
+                if(wasOnTop){
+                    draw1Down();
+                } else {
+                    draw1Up();
+                }
+                wasOnTop = !wasOnTop;
             } else {
                 draw0();
             }
         }
-        save("RZ", "png");
+        save("AMI", "png");
     }
 
-    private void draw1(){
+    private void draw1Up(){
         drawText(getHTextOffset(), vTextOffset, "1");
         drawVerticalLineUp(hGraphOffset, vGraphOffset, vBaseLength);
         vGraphOffset -= vBaseLength;
@@ -28,23 +36,22 @@ public class RZGraph extends Drawer {
         hGraphOffset += hBaseLength;
         drawVerticalLineDown(hGraphOffset,vGraphOffset, vBaseLength);
         vGraphOffset += vBaseLength;
-        drawHorizontalLine(hGraphOffset, vGraphOffset, hBaseLength);
-        hGraphOffset += hBaseLength;
     }
 
-    private void draw0(){
-        drawText(getHTextOffset(), vTextOffset, "0");
+    private void draw1Down(){
+        drawText(getHTextOffset(), vTextOffset, "1");
         drawVerticalLineDown(hGraphOffset, vGraphOffset, vBaseLength);
         vGraphOffset += vBaseLength;
         drawHorizontalLine(hGraphOffset, vGraphOffset, hBaseLength);
         hGraphOffset += hBaseLength;
         drawVerticalLineUp(hGraphOffset,vGraphOffset, vBaseLength);
         vGraphOffset -= vBaseLength;
+    }
+
+    private void draw0(){
+        drawText(getHTextOffset(), vTextOffset, "0");
         drawHorizontalLine(hGraphOffset, vGraphOffset, hBaseLength);
         hGraphOffset += hBaseLength;
     }
 
-    private int getHTextOffset(){
-        return hGraphOffset + hBaseLength / 3;
-    }
 }

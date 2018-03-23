@@ -1,3 +1,9 @@
+import graphics.AMIGraph;
+import graphics.NRZGraph;
+import graphics.RZGraph;
+import spectrum.NRZSpectrum;
+import spectrum.RZSpectrum;
+import utils.StringUtils;
 
 public class NetwLab1{
     public static void main(String[] args) {
@@ -25,10 +31,13 @@ public class NetwLab1{
 
         RZSpectrum rzSpectrum = new RZSpectrum(binary);
         System.out.println("RZ:");
-        System.out.println("f0 : " + c/2 + "khz");
+        System.out.println("f0 : " + c + "khz");
         System.out.println("Max freq: " + rzSpectrum.getMax(c) + "khz");
         System.out.println("Min freq: " + rzSpectrum.getMin(c) + "khz");
         System.out.println("Mean freq: " + rzSpectrum.getMean(c) + "khz");
+
+        AMIGraph amiGraph = new AMIGraph(width, height);
+        amiGraph.doMagic(binary);
     }
 
 }

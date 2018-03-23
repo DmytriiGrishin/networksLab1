@@ -1,9 +1,11 @@
+package spectrum;
+
 import java.util.HashMap;
 
 public class RZSpectrum {
     private HashMap<Integer, Integer> intervals;
     private int bitsLength;
-    RZSpectrum(String text){
+    public RZSpectrum(String text){
         intervals = new HashMap<Integer, Integer>();
         byte[] bytes = text.getBytes();
         int[] bits = new int[bytes.length];
@@ -17,28 +19,19 @@ public class RZSpectrum {
         for(int i = 1; i < bits.length; i++) {
             int currentBit = bits[i] ;
             if(currentBit != state){
-                if(drop){
-                    Integer currentCountInMap = intervals.get(counter);
-                    intervals.put(4, (currentCountInMap == null) ? 1 : currentCountInMap + 1);
-                    counter = 1;
-                    drop = false;
-                } else {
-                    counter ++;
-                    drop = true;
-                }
-                state = currentBit;
+                    Integer currentCountInMap = intervals.get(2);
+                    intervals.put(2, (currentCountInMap == null) ? 1 : currentCountInMap + 1);
+                    state = currentBit;
             } else {
-                Integer currentCountInMap = intervals.get(counter);
-                intervals.put(counter, (currentCountInMap == null) ? 1 : currentCountInMap + 1);
-                counter = 1;
-                drop = false;
+                    Integer currentCountInMap = intervals.get(1);
+                    intervals.put(1, (currentCountInMap == null) ? 1 : currentCountInMap + 1);
             }
         }
-        intervals.put(counter, intervals.get(counter) == null ? 1 : intervals.get(counter) +1 );
+        intervals.put(1, intervals.get(1) == null ? 1 : intervals.get(counter) + 2);
     }
 
     public Double getMax(int c){
-        return (double)(c)/2*7;
+        return (double)(c)*7;
     }
 
     public Double getMin(int c) {
@@ -56,7 +49,7 @@ public class RZSpectrum {
     public Double getMean(int c) {
         double mean = 0.0;
         for (Integer i : intervals.keySet()) {
-            mean += c  * intervals.get(i);
+            mean += c  * intervals.get(i) / i;
         }
         return mean / bitsLength;
     }

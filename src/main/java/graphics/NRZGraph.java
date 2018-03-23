@@ -1,3 +1,5 @@
+package graphics;
+
 public class NRZGraph extends Drawer{
     private int prevState;
 
@@ -42,8 +44,5 @@ public class NRZGraph extends Drawer{
         prevState = 0;
     }
 
-    private int getHTextOffset(){
-        return hGraphOffset + hBaseLength / 3;
-    }
 
 }
