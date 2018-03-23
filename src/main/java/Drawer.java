@@ -5,6 +5,12 @@ import java.io.File;
 import java.io.IOException;
 
 class Drawer {
+    int vTextOffset;
+    int hGraphOffset;
+    int vGraphOffset;
+    int hBaseLenght;
+    int vBaseLength;
+    final int PIECES_COUNT = 32;
     private BufferedImage img;
     private Graphics2D  g2;
 
@@ -14,6 +20,24 @@ class Drawer {
         g2.fillRect(0,0, width, height);
         g2.setBackground(Color.white);
         g2.setColor(Color.BLACK);
+        hBaseLenght = width / (PIECES_COUNT + 1);
+        vBaseLength = height / 5 * 3;
+        vTextOffset = height / 5 ;
+        vGraphOffset = height / 5 / 2 * 9;
+        hGraphOffset = hBaseLenght / 2;
+    }
+
+    void drawBackground(){
+        int localHOffset = hGraphOffset;
+        int localVOffset = vGraphOffset;
+        Stroke dashed = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND, 0, new float[]{1, 1}, 0);
+        g2.setStroke(dashed);
+        for(int i = 0; i<PIECES_COUNT; i++){
+            drawVerticalLineUp(localHOffset, localVOffset, vBaseLength);
+            drawHorizontalLine(localHOffset, localVOffset - vBaseLength/2, hBaseLenght);
+            localHOffset += hBaseLenght;
+        }
+        g2.setStroke(new BasicStroke(1));
     }
 
     void drawHorizontalLine(int x, int y, int length){

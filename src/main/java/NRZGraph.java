@@ -1,25 +1,14 @@
-//TODO Refactor and draw background
 public class NRZGraph extends Drawer{
-    private int vTextOffset;
-    private int hGraphOffset;
-    private int vGraphOffset;
-    private int hBaseLenght;
-    private int vBaseLength;
     private int prevState;
-    private final int PIECES_COUNT = 78;
 
     public NRZGraph(int width, int height){
         super(width, height);
-        hBaseLenght = width / (PIECES_COUNT + 1);
-        vBaseLength = height / 5 * 3;
-        vTextOffset = height / 5 ;
-        vGraphOffset = height / 5 / 2 * 9;
-        hGraphOffset = hBaseLenght / 2;
         prevState = 0;
     }
 
     public void doMagic(String text){
-        String str = text;
+        drawBackground();
+        String str = text.substring(0, 31);
         char[] chars = str.toCharArray();
         for(char symbol: chars){
             if(symbol == '1'){
