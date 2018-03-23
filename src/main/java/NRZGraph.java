@@ -26,8 +26,8 @@ public class NRZGraph extends Drawer{
             drawVerticalLineUp(hGraphOffset, vGraphOffset, vBaseLength);
             vGraphOffset -= vBaseLength;
         }
-        drawHorizontalLine(hGraphOffset, vGraphOffset, hBaseLenght);
-        hGraphOffset += hBaseLenght;
+        drawHorizontalLine(hGraphOffset, vGraphOffset, hBaseLength);
+        hGraphOffset += hBaseLength;
         prevState = 1;
     }
 
@@ -37,13 +37,13 @@ public class NRZGraph extends Drawer{
             drawVerticalLineDown(hGraphOffset, vGraphOffset, vBaseLength);
             vGraphOffset += vBaseLength;
         }
-        drawHorizontalLine(hGraphOffset, vGraphOffset, hBaseLenght);
-        hGraphOffset += hBaseLenght;
+        drawHorizontalLine(hGraphOffset, vGraphOffset, hBaseLength);
+        hGraphOffset += hBaseLength;
         prevState = 0;
     }
 
     private int getHTextOffset(){
-        return hGraphOffset + hBaseLenght / 3;
+        return hGraphOffset + hBaseLength / 3;
     }
 
 }

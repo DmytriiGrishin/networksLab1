@@ -8,7 +8,7 @@ class Drawer {
     int vTextOffset;
     int hGraphOffset;
     int vGraphOffset;
-    int hBaseLenght;
+    int hBaseLength;
     int vBaseLength;
     final int PIECES_COUNT = 32;
     private BufferedImage img;
@@ -20,11 +20,11 @@ class Drawer {
         g2.fillRect(0,0, width, height);
         g2.setBackground(Color.white);
         g2.setColor(Color.BLACK);
-        hBaseLenght = width / (PIECES_COUNT + 1);
+        hBaseLength = width / (PIECES_COUNT + 1);
         vBaseLength = height / 5 * 3;
         vTextOffset = height / 5 ;
         vGraphOffset = height / 5 / 2 * 9;
-        hGraphOffset = hBaseLenght / 2;
+        hGraphOffset = hBaseLength / 2;
     }
 
     void drawBackground(){
@@ -34,8 +34,8 @@ class Drawer {
         g2.setStroke(dashed);
         for(int i = 0; i<PIECES_COUNT; i++){
             drawVerticalLineUp(localHOffset, localVOffset, vBaseLength);
-            drawHorizontalLine(localHOffset, localVOffset - vBaseLength/2, hBaseLenght);
-            localHOffset += hBaseLenght;
+            drawHorizontalLine(localHOffset, localVOffset - vBaseLength/2, hBaseLength);
+            localHOffset += hBaseLength;
         }
         g2.setStroke(new BasicStroke(1));
     }
