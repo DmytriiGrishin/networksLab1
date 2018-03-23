@@ -49,7 +49,7 @@ public class RZSpectrum {
                 maxInterval = i;
             }
         }
-        min = (double) c / (maxInterval * 2);
+        min = (double) c / maxInterval;
         return min;
     }
 
