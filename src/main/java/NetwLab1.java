@@ -9,9 +9,10 @@ public class NetwLab1{
         System.out.println(hexedInput);
         String binary = StringUtils.toBinary(bytes);
         System.out.println(binary);
-
         NRZGraph nrzGraph = new NRZGraph(800, 200);
         nrzGraph.doMagic(binary);
+
+        NRZSpectrum nrzSpectrum = new NRZSpectrum(binary);
     }
 
 }
