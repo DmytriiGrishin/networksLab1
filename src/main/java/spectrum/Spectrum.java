@@ -14,7 +14,7 @@ public class Spectrum {
         stringBuilder.append("F = " + getMax(c) /1000 + " - " + getMin(c) /1000 + " = " + (getMax(c) /1000 - getMin(c) /1000) );
         stringBuilder.append("\nMean freq: \nfср = (");// + getMean(c) /1000 + "mhz\n");
         for(Integer i: intervals.keySet()){
-            stringBuilder.append(intervals.get(i) + "*" + c/i/1000 + " + ");
+            stringBuilder.append(intervals.get(i) + "*" + c/i/2/1000 + " + ");
         }
         stringBuilder.append(") /" + bitsLength + " = " + getMean(c)/1000 + "\n");
         return stringBuilder.toString();

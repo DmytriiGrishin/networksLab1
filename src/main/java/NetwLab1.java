@@ -61,6 +61,20 @@ public class NetwLab1{
         System.out.println("Binary: " +logicCodedbinaryWithSpasec + "\nBits = " + logicCodedbinary.length());
         String logicHexed = StringUtils.binaryToHex(logicCodedbinary);
         System.out.println("Hexed: " + logicHexed + "\nBytes = " + logicHexed.length()/2);
+
+        NRZIGraph nrziLoicGraph = new NRZIGraph(width, height);
+        nrziLoicGraph.doMagic(logicCodedbinary);
+
+        NRZISpectrum nrziLogicSpectrum = new NRZISpectrum(logicCodedbinary);
+        System.out.println("NRZI logic:");
+        System.out.println(nrziLogicSpectrum.toString(c));
+
+        ManchesterDiscreteGraph manchesterLogicDiscreteGraph = new ManchesterDiscreteGraph(width, height);
+        manchesterLogicDiscreteGraph.doMagic(logicCodedbinary);
+
+        ManchesterDiscreteSpectrum manchesterLogicDiscreteSpectrum = new ManchesterDiscreteSpectrum(logicCodedbinary);
+        System.out.println("Manchester discrete logic:");
+        System.out.println(manchesterLogicDiscreteSpectrum.toString(c));
     }
 
 }
