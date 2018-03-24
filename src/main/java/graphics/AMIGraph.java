@@ -1,5 +1,5 @@
 package graphics;
-
+@Deprecated
 public class AMIGraph extends Drawer {
     private boolean wasOnTop;
     public AMIGraph(int wight, int height){
