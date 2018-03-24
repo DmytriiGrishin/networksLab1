@@ -1,6 +1,6 @@
-import graphics.AMIGraph;
-import graphics.NRZGraph;
-import graphics.RZGraph;
+import graphics.*;
+import spectrum.ManchesterSpectrum;
+import spectrum.NRZISpectrum;
 import spectrum.NRZSpectrum;
 import spectrum.RZSpectrum;
 import utils.StringUtils;
@@ -38,6 +38,26 @@ public class NetwLab1{
 
         AMIGraph amiGraph = new AMIGraph(width, height);
         amiGraph.doMagic(binary);
+
+        NRZIGraph nrziGraph = new NRZIGraph(width, height);
+        nrziGraph.doMagic(binary);
+
+        NRZISpectrum nrziSpectrum = new NRZISpectrum(binary);
+        System.out.println("NRZI:");
+        System.out.println("f0 : " + c/2 + "khz");
+        System.out.println("Max freq: " + nrziSpectrum.getMax(c) + "khz");
+        System.out.println("Min freq: " + nrziSpectrum.getMin(c) + "khz");
+        System.out.println("Mean freq: " + nrziSpectrum.getMean(c) + "khz");
+
+        ManchesterGraph manchesterGraph = new ManchesterGraph(width, height);
+        manchesterGraph.doMagic(binary);
+
+        ManchesterSpectrum manchesterSpectrum= new ManchesterSpectrum(binary);
+        System.out.println("Manchester:");
+        System.out.println("f0 : " + c + "khz");
+        System.out.println("Max freq: " + manchesterSpectrum.getMax(c) + "khz");
+        System.out.println("Min freq: " + manchesterSpectrum.getMin(c) + "khz");
+        System.out.println("Mean freq: " + manchesterSpectrum.getMean(c) + "khz");
     }
 
 }
