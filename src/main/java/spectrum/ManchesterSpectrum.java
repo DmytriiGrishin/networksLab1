@@ -2,10 +2,7 @@ package spectrum;
 
 import java.util.HashMap;
 
-public class ManchesterSpectrum {
-    private HashMap<Integer, Integer> intervals;
-    private int bitsLength;
-
+public class ManchesterSpectrum extends Spectrum {
     public ManchesterSpectrum(String text){
         intervals = new HashMap<Integer, Integer>();
         byte[] bytes = text.getBytes();
@@ -31,6 +28,10 @@ public class ManchesterSpectrum {
 
     public Double getMax(int c){
         return (double)(c)*7;
+    }
+
+    public Double getF0(int c){
+        return (double)c;
     }
 
     public Double getMin(int c) {

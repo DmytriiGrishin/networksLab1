@@ -2,9 +2,7 @@ package spectrum;
 
 import java.util.HashMap;
 
-public class NRZSpectrum {
-    private HashMap<Integer, Integer> intervals;
-    private int bitsLength;
+public class NRZSpectrum extends Spectrum {
     public NRZSpectrum(String text){
         intervals = new HashMap<Integer, Integer>();
         byte[] bytes = text.getBytes();
@@ -44,7 +42,17 @@ public class NRZSpectrum {
         min = (double) c / (maxInterval * 2);
         return min;
     }
-
+    public Double getF0(int c){
+        double f0;
+        int minInterval = Integer.MAX_VALUE;
+        for (Integer i : intervals.keySet()) {
+            if (i < minInterval) {
+                minInterval = i;
+            }
+        }
+        f0 = (double) c / (minInterval * 2);
+        return f0;
+    }
     public Double getMean(int c) {
         double mean = 0.0;
         for (Integer i : intervals.keySet()) {

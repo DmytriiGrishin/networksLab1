@@ -1,8 +1,6 @@
 import graphics.*;
-import spectrum.ManchesterSpectrum;
-import spectrum.NRZISpectrum;
-import spectrum.NRZSpectrum;
-import spectrum.RZSpectrum;
+import spectrum.*;
+import utils.LogicCoding;
 import utils.StringUtils;
 
 public class NetwLab1{
@@ -21,20 +19,16 @@ public class NetwLab1{
 
         NRZSpectrum nrzSpectrum = new NRZSpectrum(binary);
         System.out.println("NRZ:");
-        System.out.println("f0 : " + c/2 + "khz");
-        System.out.println("Max freq: " + nrzSpectrum.getMax(c) + "khz");
-        System.out.println("Min freq: " + nrzSpectrum.getMin(c) + "khz");
-        System.out.println("Mean freq: " + nrzSpectrum.getMean(c) + "khz");
+
+        System.out.println(nrzSpectrum.toString(c));
+
 
         RZGraph rzGraph = new RZGraph(width, height);
         rzGraph.doMagic(binary);
 
         RZSpectrum rzSpectrum = new RZSpectrum(binary);
         System.out.println("RZ:");
-        System.out.println("f0 : " + c + "khz");
-        System.out.println("Max freq: " + rzSpectrum.getMax(c) + "khz");
-        System.out.println("Min freq: " + rzSpectrum.getMin(c) + "khz");
-        System.out.println("Mean freq: " + rzSpectrum.getMean(c) + "khz");
+        System.out.println(rzSpectrum.toString(c));
 
         AMIGraph amiGraph = new AMIGraph(width, height);
         amiGraph.doMagic(binary);
@@ -44,20 +38,23 @@ public class NetwLab1{
 
         NRZISpectrum nrziSpectrum = new NRZISpectrum(binary);
         System.out.println("NRZI:");
-        System.out.println("f0 : " + c/2 + "khz");
-        System.out.println("Max freq: " + nrziSpectrum.getMax(c) + "khz");
-        System.out.println("Min freq: " + nrziSpectrum.getMin(c) + "khz");
-        System.out.println("Mean freq: " + nrziSpectrum.getMean(c) + "khz");
+        System.out.println(nrziSpectrum.toString(c));
 
         ManchesterGraph manchesterGraph = new ManchesterGraph(width, height);
         manchesterGraph.doMagic(binary);
 
         ManchesterSpectrum manchesterSpectrum= new ManchesterSpectrum(binary);
         System.out.println("Manchester:");
-        System.out.println("f0 : " + c + "khz");
-        System.out.println("Max freq: " + manchesterSpectrum.getMax(c) + "khz");
-        System.out.println("Min freq: " + manchesterSpectrum.getMin(c) + "khz");
-        System.out.println("Mean freq: " + manchesterSpectrum.getMean(c) + "khz");
+        System.out.println(manchesterSpectrum.toString(c));
+
+        ManchesterDiscreteGraph manchesterDiscreteGraph = new ManchesterDiscreteGraph(width, height);
+        manchesterDiscreteGraph.doMagic(binary);
+
+        ManchesterDiscreteSpectrum manchesterDiscreteSpectrum = new ManchesterDiscreteSpectrum(binary);
+        System.out.println("Manchester discrete:");
+        System.out.println(manchesterDiscreteSpectrum.toString(c));
+
+        String logicCodedbinary = LogicCoding.encode(binary);
     }
 
 }

@@ -15,13 +15,13 @@ public class StringUtils {
 
     public static String toHex(String text, String charset) {
         byte[] bytes = encode(text, charset);
-        return String.format("%010x", new BigInteger(1, bytes));
+        return String.format("%010X", new BigInteger(1, bytes));
     }
 
     public static String toBinary(byte[] bytes){
         StringBuilder builder = new StringBuilder();
         for(byte i: bytes) {
-            builder.append(Integer.toBinaryString(i & 0xFF));
+            builder.append(String.format("%8s", Integer.toBinaryString(i & 0xFF)).replace(' ', '0'));
         }
         return builder.toString();
     }
