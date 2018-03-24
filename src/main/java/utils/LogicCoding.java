@@ -25,7 +25,8 @@ public class LogicCoding {
     public static String encode(String str){
         StringBuilder stringBuilder = new StringBuilder();
         for(int i = 0; i < str.length(); i += 4){
-            stringBuilder.append(coddingTable.get(str.substring(i, i+4)));
+            stringBuilder.append(String.format("%4s", coddingTable.get(str.substring(i, i+4))).replace(' ', '0'));
+            stringBuilder.append(" ");
         }
 
         return stringBuilder.toString();

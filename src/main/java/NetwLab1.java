@@ -3,6 +3,8 @@ import spectrum.*;
 import utils.LogicCoding;
 import utils.StringUtils;
 
+import java.lang.reflect.Array;
+
 public class NetwLab1{
     public static void main(String[] args) {
         int c = 1000000;
@@ -54,7 +56,11 @@ public class NetwLab1{
         System.out.println("Manchester discrete:");
         System.out.println(manchesterDiscreteSpectrum.toString(c));
 
-        String logicCodedbinary = LogicCoding.encode(binary);
+        String logicCodedbinaryWithSpasec = LogicCoding.encode(binary);
+        String logicCodedbinary = logicCodedbinaryWithSpasec.replaceAll("\\s", "");
+        System.out.println("Binary: " +logicCodedbinaryWithSpasec + "\nBits = " + logicCodedbinary.length());
+        String logicHexed = StringUtils.binaryToHex(logicCodedbinary);
+        System.out.println("Hexed: " + logicHexed + "\nBytes = " + logicHexed.length()/2);
     }
 
 }
